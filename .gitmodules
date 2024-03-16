@@ -1,0 +1,3 @@
+[submodule "custom_nott"]
+	path = custom_nott
+	url = https://github.com/ltdrdata/ComfyUI-Manager.git

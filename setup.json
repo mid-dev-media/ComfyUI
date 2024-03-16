@@ -1,0 +1,24 @@
+{
+    "models": [
+        {
+            "folder": "models/vae",
+            "files": [
+                {
+                    "getter": "wget",
+                    "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors"
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "folder": "custom_nodes",
+            "files": [
+                {
+                    "getter": "git pull",
+                    "url": "https://github.com/ltdrdata/ComfyUI-Manager.git"
+                }
+            ]
+        }
+    ]
+}
