@@ -1,23 +1,26 @@
 {
-    "models": [
+    "wget": [
         {
             "folder": "models/vae",
-            "files": [
-                {
-                    "getter": "wget",
-                    "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors"
-                }
+            "urls": [
+                "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors"
+            ]
+        },
+        {
+            "folder": "models/checkpoints",
+            "urls": [
+                "https://huggingface.co/Lykon/dreamshaper-xl-lightning/resolve/main/DreamShaperXL_Lightning.safetensors",
+                "https://huggingface.co/fp16-guy/PicX_real/resolve/main/picX_real.safetensors",
+                "https://huggingface.co/LarryAIDraw/autismmixSDXL_autismmixConfetti/resolve/main/autismmixSDXL_autismmixConfetti.safetensors"
             ]
         }
+
     ],
-    "nodes": [
+    "git": [
         {
             "folder": "custom_nodes",
-            "files": [
-                {
-                    "getter": "git pull",
-                    "url": "https://github.com/ltdrdata/ComfyUI-Manager.git"
-                }
+            "urls": [
+                "https://github.com/ltdrdata/ComfyUI-Manager.git"
             ]
         }
     ]
