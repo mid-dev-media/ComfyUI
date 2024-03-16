@@ -33,7 +33,7 @@ for each_repo in config.get('git', []):
         # Get the file name from the URL
         repo_name = url.split('/')[-1].split('.')[0]
         # If the file does not exists in current directory
-        if not os.path.exists(repo_name):
+        if not os.path.exists(os.path.join(current_dir, folder, repo_name)):
             # Add the remote repository
             subprocess.run(f"git remote add -f {repo_name} {url}", shell=True)
             # Get the file
