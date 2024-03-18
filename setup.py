@@ -11,7 +11,7 @@ with open(config_file) as f:
     config = json.load(f)
 
 update_config = []
-# Process the "models" section
+# Process the "models" section using the "wget" command
 for each_folder in config.get('wget', []):
     folder = each_folder.get('folder')
     urls = each_folder.get('urls')
@@ -21,22 +21,25 @@ for each_folder in config.get('wget', []):
             # Check for and handle civitai links that dont have filenames
             if 'civitai' in url:
                 files_before = os.listdir(os.getcwd())
+                # Using --content-disposition to get form civitai
                 subprocess.run(f"wget {url} --content-disposition", shell=True)
                 files_after = os.listdir(os.getcwd())
                 new_files = list(set(files_after) - set(files_before))
-                print(new_files)
+                # Check if there is a new file
                 if len(new_files) == 1:
                     file_name = new_files[0]
+                    # Add the new file to the update_config list for future checks
                     update_config.append({'org': url, 'new':{'file_name': file_name, 'link': url}})
                 else:
                     print(f"Error: Multiple files downloaded for {url}")
             else:
+                # Else assume the filename is in the URL
                 file_name = url.split('/')[-1]
                 if not os.path.exists(file_name):
                     subprocess.run(f"wget {url}", shell=True)
                 else:
                     print(f"{folder} {file_name} already exists")
-
+        # Check if the URL is a dictionary, for civitai links that have already been downloaded
         elif isinstance(url, dict):
             file_name = url.get('file_name')
             url = url.get('link')
@@ -45,7 +48,7 @@ for each_folder in config.get('wget', []):
             else:
                 print(f"{folder} {file_name} already exists")
 
-# Process the "nodes" section
+# Process the "nodes" section using the "git" command
 for each_repo in config.get('git', []):
     folder = each_repo.get('folder')
     urls = each_repo.get('urls')
@@ -62,6 +65,7 @@ for each_repo in config.get('git', []):
         else:
             print(f"{folder} {repo_name} already exists")
 
+# Update the configuration file with civitai file names if they were downloaded
 if update_config:
     update = config.copy()
     for each_folder in update.get('wget', []):
