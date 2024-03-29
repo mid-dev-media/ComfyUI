@@ -9,6 +9,7 @@
         {
             "folder": "models/checkpoints",
             "urls": [
+                "https://civitai.com/api/download/models/361779",
                 "https://huggingface.co/Lykon/dreamshaper-xl-lightning/resolve/main/DreamShaperXL_Lightning.safetensors",
                 "https://huggingface.co/fp16-guy/PicX_real/resolve/main/picX_real.safetensors",
                 {
